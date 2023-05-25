@@ -16,6 +16,24 @@ import static com.soen390.team11.security.SecurityConstant.SECRET;
 import static com.soen390.team11.security.SecurityConstant.TOKEN_PREFIX;
 
 /**
+ * This class represents an authorization filter used for validating and processing authorization tokens
+ * in the Spring Security framework.
+ * It extends the BasicAuthenticationFilter class and overrides the doFilterInternal method to intercept
+ * requests and perform token-based authentication.
+ *
+ * The purpose of this class is to define the authorization behavior and determine what actions a user is allowed to perform.
+ * It utilizes a token-based authentication mechanism, where the presence of a valid token in the request header
+ * indicates that the user is authenticated.
+ *
+ * The filter extracts the token from the "Authorization" header, verifies its authenticity using the provided secret key,
+ * and retrieves the user information from the token's claims. If the user is authenticated, an
+ * instance of UsernamePasswordAuthenticationToken is created and set in the SecurityContextHolder.
+ *
+ * This class plays a crucial role in securing the application by ensuring that only authorized users can access
+ * protected resources and perform permitted actions.
+ */
+
+/**
  * authorization help to define what the user are allow to do
  * with the help of token we can verify if the person is authenticated or not
  */
