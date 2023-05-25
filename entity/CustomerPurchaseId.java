@@ -1,5 +1,13 @@
 package com.soen390.team11.entity;
+/**
 
+This class represents an embeddable ID for a customer purchase in the system.
+It is used to uniquely identify a customer's purchase by combining the customer ID, product ID, and invoice ID.
+The class is marked as @Embeddable, indicating that its fields will be embedded within the owning entity.
+It implements Serializable to support serialization and deserialization of the object.
+The class provides getters and setters for each field and overrides the equals() and hashCode() methods
+to enable proper comparison and hashing of objects based on their customer ID, product ID, and invoice ID.
+*/
 import com.sun.istack.NotNull;
 
 import javax.persistence.Embeddable;
@@ -9,6 +17,7 @@ import java.util.Objects;
 /**
  * embeddable id of customer purchase
  */
+
 @Embeddable
 public class CustomerPurchaseId implements Serializable {
     @NotNull
@@ -51,7 +60,11 @@ public class CustomerPurchaseId implements Serializable {
         this.invoiceID = invoiceID;
     }
 
-    @Override
+   
+   /**
+ * Overrides the equals() method to compare two CustomerPurchaseId objects for equality.
+ * Two objects are considered equal if they have the same customer ID, product ID, and invoice ID.
+ */
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
