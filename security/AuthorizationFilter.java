@@ -43,6 +43,8 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         super(authenticationManager);
     }
 
+    // Performs authorization filtering based on the presence and format of the token in the request header.
+    
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
