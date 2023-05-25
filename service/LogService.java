@@ -92,6 +92,9 @@ public class LogService {
      * @return A file with the logs
      * @throws IOException Thrown if it is unable to create a file
      */
+    
+    // Generates a CSV file with logs of the specified log type and returns it as a ByteArrayResource.
+    
     public ByteArrayResource getCSV(LogTypes logTypes) throws IOException
     {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -114,6 +117,9 @@ public class LogService {
      * @param logType the type of log
      * @param message the message
      */
+    
+    // Writes a log entry with the specified log type, message, and current timestamp.
+    
     public void writeLog(LogTypes logType, String message)
     {
         List<Log> list = logs.get(logType);
