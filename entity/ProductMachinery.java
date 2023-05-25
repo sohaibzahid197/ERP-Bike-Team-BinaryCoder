@@ -14,6 +14,20 @@ import javax.persistence.OneToOne;
 /**
  * Database Entity for Product Machinery
  */
+
+/**
+ * This class represents the database entity for Product Machinery.
+ * It stores information about a specific machinery used in the production process of a product.
+ * Each machinery has a unique identifier (id), a name, a status indicating its operational state,
+ * a timer representing the time remaining for the current operation, and a reference to the associated product.
+ * The status of the machinery can be one of the predefined values defined in the MachineryState enum.
+ * The timer indicates the remaining time for the current operation being performed by the machinery.
+ * The product field represents the product associated with the machinery.
+ * This class provides methods to access and modify the attributes of the machinery, including setting the status,
+ * updating the timer, and assigning a product to the machinery.
+ */
+
+
 @Entity
 public class ProductMachinery {
     @Id
@@ -61,6 +75,7 @@ public class ProductMachinery {
         return status;
     }
 
+    // Updates the status of the machinery if the transition is valid, returns true if successful.
     public boolean setStatus(MachineryState status) {
         if (MachineryState.validateStateTransition(this.status, status)) {
             this.status = status;
@@ -81,6 +96,9 @@ public class ProductMachinery {
         return product;
     }
 
+    /**
+ * Assigns a product to the machinery if the machinery is currently in the "UNASSIGNED" state.Returns true if the product is successfully assigned, false otherwise.
+ */
     public boolean setProduct(Product product) {
         if (this.status.equals(MachineryState.UNASSIGNED)) {
             this.product = product;
