@@ -1,5 +1,10 @@
 package com.soen390.team11.service;
-
+/**
+ * This class represents a service for managing customer shipping information.
+ * It provides methods for creating, updating, and deleting customer shipping details.
+ * The class uses a CustomerRepository for accessing and persisting customer data.
+ * It also uses a LogService for logging user actions related to customer shipping.
+ */
 import com.soen390.team11.constant.LogTypes;
 import com.soen390.team11.dto.CustomerShippingDto;
 import com.soen390.team11.entity.Customer;
@@ -35,9 +40,13 @@ public class CustomerShippingService {
      * @param customerShippingDto address information
      * @return customer id
      */
+    
+    
+    // Updates the customer's shipping information based on the provided CustomerShippingDto
     public String updateCustomer(CustomerShippingDto customerShippingDto) {
         logService.writeLog(LogTypes.USERS, "Updating customer...");
         Optional<Customer> optionalCustomer = customerRepository.findByCustomerID(customerShippingDto.getCustomerID());
+        // Check if the customer exists in the repository
         if (optionalCustomer.isPresent()) {
             logService.writeLog(LogTypes.USERS, "Setting customer's information");
             optionalCustomer.get().setFirstname(customerShippingDto.getFirstname());
@@ -47,7 +56,9 @@ public class CustomerShippingService {
             optionalCustomer.get().setProvince(customerShippingDto.getProvince());
             optionalCustomer.get().setCountry(customerShippingDto.getCountry());
             optionalCustomer.get().setZip(customerShippingDto.getZip());
-        } else {
+        } 
+         // Return an error message if the customer is not found
+        else {
             return "Customer address is not found! ";
         }
         logService.writeLog(LogTypes.USERS, "Saving customer's information");
