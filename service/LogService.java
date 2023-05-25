@@ -19,6 +19,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class represents a service for managing and handling logs in the system.
+ * It provides functionality for storing logs of different types and retrieving them.
+ * The logs are stored in a map where each log type is associated with a list of logs.
+ * The available log types are defined in the LogTypes enum.
+ *
+ * The purpose of this class is to centralize the logging process and provide a structured way
+ * to manage and retrieve logs for different parts of the system.
+ * It allows for writing logs, retrieving all logs or logs of a specific type, and obtaining logs
+ * in CSV format for exporting or further analysis.
+ *
+ * The class also includes a method to reset all logs, which can be used for clearing the logs
+ * or initializing them with empty lists.
+ */
+
 @Service
 public class LogService {
 
